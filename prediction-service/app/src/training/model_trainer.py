@@ -1,6 +1,6 @@
 import pandas as pd
 from datetime import datetime
-from config import (
+from utils.config import (
     FEATURE_COLUMNS, 
     TARGET_COLUMN,
     MODEL_PATH,
@@ -18,11 +18,11 @@ from sklearn.metrics import (
     r2_score,
 )
 
-from encoders import fit_encoders, transform_dataframe
+from training.encoders import fit_encoders, transform_dataframe
 
-from visualization import plot_actual_vs_predicted, plot_feature_importance
+from training.visualization import plot_actual_vs_predicted, plot_feature_importance
 
-from explainability import explain_model
+from training.explainability import explain_model
 
 def prepare_training_data(df):
 
@@ -230,6 +230,8 @@ def train_model(training_df):
     },
     "trained_at": datetime.now().isoformat(),
     "model_name": "XGBoost Demand Forecast",
+    "model_version": "1.0.0",
+    "hyperparameters": model.get_params(),
     }
 
     # Explainability

@@ -1,22 +1,24 @@
-from data_loader import load_orders, load_inventory
+from training.data_loader import load_orders, load_inventory
 
-from preprocessing import (
+from training.preprocessing import (
     convert_dates,
     sort_data,
     create_monthly_demand,
 )
 
-from feature_engineering import (
+from training.feature_engineering import (
     fill_missing_months,
     create_calendar_features,
     create_lag_features,
     create_rolling_features,
 )
 
-from training import (
+from training.model_trainer import (
     prepare_training_data,
     train_model,
 )
+
+from utils.config import MONTHLY_DEMAND_PATH
 
 # -------------------------------
 # Load Data
@@ -47,6 +49,12 @@ monthly_demand = create_lag_features(monthly_demand)
 
 monthly_demand = create_rolling_features(monthly_demand)
 
+# Save processed dataset for serving
+monthly_demand.to_csv(
+    MONTHLY_DEMAND_PATH,
+    index=False,
+)
+
 # -------------------------------
 # Prepare Dataset
 # -------------------------------
@@ -57,8 +65,8 @@ training_df = prepare_training_data(monthly_demand)
 # Training
 # -------------------------------
 
-print(
-    training_df["monthly_demand"].describe()
-)
+# print(
+#     training_df["monthly_demand"].describe()
+# )
 
 train_model(training_df)
