@@ -103,3 +103,11 @@ CATEGORICAL_COLUMNS = [
     "product_id",
     "category",
 ]
+
+# ------------------------------------------------
+# Business
+# ------------------------------------------------
+
+DEFAULT_DAYS_PER_MONTH = 30
+
+DEFAULT_SAFETY_STOCK_FACTOR = 0.20

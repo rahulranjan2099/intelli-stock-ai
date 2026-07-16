@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
-from utils.config import RAW_DATASET_PATH, INVENTORY_PATH
+from shared.config import RAW_DATASET_PATH, INVENTORY_PATH
 
 def load_orders():
     return pd.read_csv(RAW_DATASET_PATH)

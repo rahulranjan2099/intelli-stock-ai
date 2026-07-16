@@ -1,9 +1,9 @@
 import joblib
 import pandas as pd
 
-from utils.config import MODEL_PATH
+from shared.config import MODEL_PATH
 
-from utils.exceptions import InvalidFeatureError, ModelNotLoadedError
+from shared.exceptions import InvalidFeatureError, ModelNotLoadedError
 
 class Predictor:
 

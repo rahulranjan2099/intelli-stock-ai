@@ -30,7 +30,7 @@ def plot_actual_vs_predicted(results_df):
     plt.tight_layout()
 
     plt.savefig(
-        "app/output/actual_vs_predicted.png",
+        "output/actual_vs_predicted.png",
         dpi=300,
         bbox_inches="tight",
     )
@@ -52,6 +52,6 @@ def plot_feature_importance(importance_df):
 
     plt.tight_layout()
 
-    plt.savefig("app/output/feature_importance.png", dpi=300, bbox_inches="tight")
+    plt.savefig("output/feature_importance.png", dpi=300, bbox_inches="tight")
 
     plt.close()

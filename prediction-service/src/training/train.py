@@ -18,7 +18,7 @@ from training.model_trainer import (
     train_model,
 )
 
-from utils.config import MONTHLY_DEMAND_PATH
+from shared.config import MONTHLY_DEMAND_PATH
 
 # -------------------------------
 # Load Data

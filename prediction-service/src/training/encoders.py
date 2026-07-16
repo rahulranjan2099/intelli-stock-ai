@@ -2,7 +2,7 @@ import joblib
 
 from sklearn.preprocessing import OrdinalEncoder
 
-from utils.config import (
+from shared.config import (
     ENCODER_PATH,
     CATEGORICAL_COLUMNS,
 ) 

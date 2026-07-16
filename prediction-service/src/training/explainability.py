@@ -18,7 +18,7 @@ def explain_model(model, X_train):
     plt.tight_layout()
 
     plt.savefig(
-        "app/output/shap_summary.png",
+        "output/shap_summary.png",
         dpi=300,
         bbox_inches="tight",
     )

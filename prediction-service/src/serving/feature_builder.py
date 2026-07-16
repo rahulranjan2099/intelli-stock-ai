@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 
-from utils.config import MONTHLY_DEMAND_PATH, FEATURE_COLUMNS
+from shared.config import MONTHLY_DEMAND_PATH, FEATURE_COLUMNS
 
-from utils.exceptions import ProductNotFoundError
+from shared.exceptions import ProductNotFoundError
 
 from datetime import datetime
 

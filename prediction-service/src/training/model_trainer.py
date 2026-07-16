@@ -1,6 +1,6 @@
 import pandas as pd
 from datetime import datetime
-from utils.config import (
+from shared.config import (
     FEATURE_COLUMNS, 
     TARGET_COLUMN,
     MODEL_PATH,
