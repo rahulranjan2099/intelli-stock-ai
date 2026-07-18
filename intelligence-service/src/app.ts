@@ -1,6 +1,9 @@
-const express = require("express");
-const cors = require("cors");
-const predictionRoutes = require("./routes/predictionRoutes");
+import "dotenv/config";
+
+import cors from "cors";
+import express from "express";
+
+import predictionRoutes from "./routes/predictionRoutes.js";
 
 const app = express();
 const port = Number(process.env.PORT) || 3000;
@@ -21,4 +24,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = app;
+export default app;
