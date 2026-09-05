@@ -6,8 +6,7 @@ import { BaseChatModel } from "@langchain/core/language_models/chat_models";
 import { LLMProvider } from "./models"
 
 export class LLMFactory {
-    static create(): BaseChatModel {
-        console.log('checkingprocess.env.LLM_PROVIDER', process.env.LLM_PROVIDER)
+    static create() {
         switch (process.env.LLM_PROVIDER) {
             case LLMProvider.OLLAMA:
                 return new ChatOllama({

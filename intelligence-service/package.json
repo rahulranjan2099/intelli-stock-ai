@@ -7,7 +7,7 @@
     "start": "node dist/app.js",
     "dev": "tsx watch src/app.ts",
     "typecheck": "tsc --noEmit",
-    "llm:test": "tsx src/ai/test/llm.test.ts"
+    "llm:test": "tsx src/ai/test/tool.test.ts"
   },
   "keywords": [],
   "author": "",
