@@ -22,6 +22,7 @@ def forecast(
         get_forecast_service
         )
 ):
+    print('request', request)
     result = service.forecast_next(
         
         store_id=request.store_id,

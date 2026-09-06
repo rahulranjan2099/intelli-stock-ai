@@ -34,6 +34,6 @@ async function forecastExplanation(){
     console.log(result)
     console.log(result.data)
 }
-// forecastToolTest()
+forecastToolTest()
 // recommendOrder()
-forecastExplanation()
+// forecastExplanation()

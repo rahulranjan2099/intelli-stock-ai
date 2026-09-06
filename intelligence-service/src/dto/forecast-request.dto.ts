@@ -1,12 +1,30 @@
 import { z } from "zod";
 
 export const ForecastRequestSchema = z.object({
-  storeId: z.string().min(1),
-  productId: z.string().min(1),
-  months: z.number().int().min(1).max(24).default(1),
-  promotionFlag: z.boolean().default(false),
-  holidayFlag: z.boolean().default(false),
-  discountPct: z.number().min(0).max(100).default(0),
+  storeId: z.string().regex(/^S\d{3}$/, "storeId must look like S010"),
+  productId: z.string().regex(/^P\d{4}$/, "productId must look like P0001"),
+
+  months: z.number().int().positive().default(1),
+
+  promotionFlag: z
+    .boolean()
+    .nullable()
+    .optional()
+    .transform((value) => value ?? false),
+
+  holidayFlag: z
+    .boolean()
+    .nullable()
+    .optional()
+    .transform((value) => value ?? false),
+
+  discountPct: z
+    .number()
+    .min(0)
+    .max(100)
+    .nullable()
+    .optional()
+    .transform((value) => value ?? 0),
 });
 
 export type ForecastRequest = z.infer<typeof ForecastRequestSchema>;
