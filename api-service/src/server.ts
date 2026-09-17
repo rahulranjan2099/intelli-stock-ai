@@ -1,14 +1,13 @@
-import dotenv from "dotenv";
+import "dotenv/config";
 import app from "./app.js"
 import sequelize from "./config/database.js";
-
-dotenv.config()
+import "./models/index.js"
 
 const PORT = process.env.PORT || 5000
 
 const startServer = async() => {
     try{
-        await sequelize.transaction()
+        await sequelize.authenticate()
         console.log("Postgresql connected successfully")
 
         app.listen(PORT, ()=>{

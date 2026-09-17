@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../api/axios";
+// import api from "../api/axios";
+import { useAuth } from "../auth/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,12 +19,7 @@ const Login = () => {
     setError("");
     setLoading(true);
     try {
-      const response = await api.post("/auth/login", {
-        email,
-        password,
-      });
-
-      console.log("Login response:", response.data);
+      await login(email, password)
 
       navigate("/dashboard");
     } catch (error) {
