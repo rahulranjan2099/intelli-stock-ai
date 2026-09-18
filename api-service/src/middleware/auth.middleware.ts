@@ -9,7 +9,7 @@ export interface AuthRequest extends Request {
 }
 
 export const authenticationToken = (
-    req: Request,
+    req: AuthRequest,
     res: Response,
     next: NextFunction
 ) => {

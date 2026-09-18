@@ -1,75 +1,47 @@
-# React + TypeScript + Vite
+# IntelliStock AI frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript chat UI served at `/dashboard`, behind the existing login flow.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Set `VITE_API_URL` in `frontend/.env` to the API base URL, including `/api`:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```dotenv
+VITE_API_URL=http://localhost:5000/api
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Install dependencies and start Vite from `frontend`:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm install
+npm run dev
 ```
+
+The API, intelligence service, prediction service, and PostgreSQL must also be running for live forecasts. Apply database migrations from `api-service` before starting the updated API:
+
+```sh
+npm run migration:up
+```
+
+Migration `20260918190000-add-message-forecast-data.js` stores response type and structured data alongside assistant text. Existing messages remain readable as text; old forecast payloads cannot be reconstructed by the migration. The first message names a new conversation, and sending updates its activity timestamp.
+
+## Chat behavior
+
+- `ChatLayout` provides the account header, responsive conversation sidebar, message history, and composer.
+- Create and select conversations using the existing `/conversations` endpoints. The most recently updated chat opens on initial load.
+- Drafts and pending requests are tracked per conversation, so switching chats does not mix responses.
+- Enter sends; Shift + Enter adds a newline. Blank and duplicate in-flight sends are blocked.
+- User messages appear immediately while the assistant response is pending.
+- After a failed send, history is fetched to check whether the API saved the user message before the assistant failed. Unsaved drafts are restored; uncertain requests are never retried automatically.
+- Forecast responses display monthly demand, total demand, monthly average, horizon, model details, and the complete returned payload. Unknown payload shapes have a safe fallback.
+
+## Checks
+
+```sh
+npm run build
+npm run lint
+npx playwright install chromium
+npm run test:e2e
+```
+
+Browser tests mock the API to cover creation, history loading, conversation switching, drafts, optimistic sending, forecast reloads, failure recovery, keyboard input, and mobile layout. They do not require a running backend. Real model accuracy and service integration are outside these mocked tests.

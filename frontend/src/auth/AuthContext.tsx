@@ -1,31 +1,11 @@
 import {
-    createContext,
-    // ReactNode,
-    useContext,
     useEffect,
     useState
 } from "react"
 import type { ReactNode } from "react"
 import api from "../api/axios"
-
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
-
-interface AuthContextType {
-    user: User | null;
-    loading: boolean;
-
-    login: (
-        email: string,
-        password: string
-     ) => Promise<void>
-     logout: () => void;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined)
+import { AuthContext } from './useAuth'
+import type { User } from './useAuth'
 
 export const AuthProvider = ({
     children,
@@ -45,7 +25,7 @@ export const AuthProvider = ({
             try{
                 const response = await api.get("/auth/me")
                 setUser(response.data.user)
-            }catch(err){
+            }catch{
                 localStorage.removeItem("accessToken")
                 setUser(null)
             }finally {
@@ -78,12 +58,4 @@ export const AuthProvider = ({
             {children}
         </AuthContext.Provider>
     )
-}
-
-export const useAuth = ()=> {
-    const context = useContext(AuthContext)
-    if(!context) {
-        throw new Error("useAuth must be used inside AuthProvider")
-    }
-    return context;
 }

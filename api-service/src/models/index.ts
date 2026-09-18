@@ -1,6 +1,7 @@
 import User from "./User.js";
 import Conversation from "./Conversation.js";
 import Message from "./Message.js";
+import Product from "./Product.js";
 
 User.hasMany(Conversation, {
     foreignKey: "userId",
@@ -26,4 +27,5 @@ export {
     User,
     Conversation,
     Message,
+    Product,
 };

@@ -10,7 +10,9 @@
     "start": "node dist/server.js",
     "migration:up": "sequelize-cli db:migrate",
     "migration:undo": "sequelize-cli db:migrate:undo",
-    "migration:status": "sequelize-cli db:migrate:status"
+    "migration:status": "sequelize-cli db:migrate:status",
+    "seed:up": "sequelize-cli db:seed:all",
+    "seed:undo": "sequelize-cli db:seed:undo"
   },
   "keywords": [],
   "author": "",

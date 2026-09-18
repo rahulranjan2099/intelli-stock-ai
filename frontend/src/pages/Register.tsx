@@ -1,4 +1,5 @@
 import { useState } from "react"
+import type { FormEvent } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/axios"
 
@@ -12,7 +13,7 @@ const Register = () => {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
 
-    const handleSubmit = async(event: any) => {
+    const handleSubmit = async(event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         setError("")
@@ -32,7 +33,7 @@ const Register = () => {
         }
     }
     return (
-        <div>
+        <div className="auth-page">
             <h1>Create Account</h1>
             <form onSubmit={handleSubmit}>
                 <div>

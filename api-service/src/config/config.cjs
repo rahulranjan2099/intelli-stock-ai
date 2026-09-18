@@ -2,6 +2,7 @@ require("dotenv").config();
 
 module.exports = {
   development: {
+    seederStorage: "sequelize",
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
@@ -11,6 +12,7 @@ module.exports = {
   },
 
   test: {
+    seederStorage: "sequelize",
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
@@ -20,6 +22,7 @@ module.exports = {
   },
 
   production: {
+    seederStorage: "sequelize",
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,

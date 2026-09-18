@@ -33,6 +33,13 @@ export const sendMessage = async ({
     content,
   });
 
+  // Give chats a useful name and keep recently active chats at the top.
+  if (conversation.title.toLowerCase() === "new conversation") {
+    conversation.title = content.replace(/\s+/g, " ").slice(0, 80);
+  }
+  conversation.changed("updatedAt", true);
+  await conversation.save();
+
   // 3. LangGraph handles conversation state
   const intelligenceResponse =
     await askIntelligenceService({
@@ -45,11 +52,14 @@ export const sendMessage = async ({
     conversationId,
     role: "ASSISTANT",
     content: intelligenceResponse.response,
+    type: intelligenceResponse.type,
+    data: intelligenceResponse.data,
   });
 
   return {
     userMessage,
     assistantMessage,
+    conversation,
 
     type: intelligenceResponse.type,
     data: intelligenceResponse.data,

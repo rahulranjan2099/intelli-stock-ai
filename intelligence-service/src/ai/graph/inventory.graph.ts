@@ -3,8 +3,12 @@ import {
   START,
   END,
   Annotation,
-  MemorySaver,
+  // MemorySaver,
 } from "@langchain/langgraph";
+
+import {
+  checkpointer,
+} from "../../config/langgraph-checkpointer";
 
 import {
   HumanMessage,
@@ -23,7 +27,7 @@ import { PredictionService } from "../../services/prediction.service";
 // Dependencies
 // ============================================================
 
-const checkpointer = new MemorySaver();
+// const checkpointer = new MemorySaver();
 
 const productService = new ProductService();
 

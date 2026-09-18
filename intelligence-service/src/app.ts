@@ -3,7 +3,8 @@ import "dotenv/config";
 import cors from "cors";
 import express from "express";
 
-import routes from "./routes/index"
+import routes from "./routes/index";
+import { checkpointer } from "./config/langgraph-checkpointer.js";
 
 const app = express();
 const port = Number(process.env.PORT) || 8000;
@@ -18,10 +19,23 @@ app.get("/health", (_request, response) => {
 
 app.use("/api", routes);
 
-if (require.main === module) {
-  app.listen(port, () => {
-    console.log(`Intelligence service listening on port ${port}`);
-  });
+async function startServer() {
+  try {
+    await checkpointer.setup();
+
+    app.listen(port, () => {
+      console.log(
+        `Intelligence service running on port ${port}`
+      );
+    });
+  } catch (error) {
+    console.error(
+      "Failed to start intelligence service:",
+      error
+    );
+
+    process.exit(1);
+  }
 }
 
-export default app;
+startServer();
