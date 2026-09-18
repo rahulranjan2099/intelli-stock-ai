@@ -1,0 +1,202 @@
+[
+  {
+    "product_id": "P0001",
+    "product_name": "Milk"
+  },
+  {
+    "product_id": "P0002",
+    "product_name": "Curd"
+  },
+  {
+    "product_id": "P0003",
+    "product_name": "Butter"
+  },
+  {
+    "product_id": "P0004",
+    "product_name": "Cheese"
+  },
+  {
+    "product_id": "P0005",
+    "product_name": "Paneer"
+  },
+  {
+    "product_id": "P0006",
+    "product_name": "Bread"
+  },
+  {
+    "product_id": "P0007",
+    "product_name": "Bun"
+  },
+  {
+    "product_id": "P0008",
+    "product_name": "Cake"
+  },
+  {
+    "product_id": "P0009",
+    "product_name": "Cookies"
+  },
+  {
+    "product_id": "P0010",
+    "product_name": "Rusk"
+  },
+  {
+    "product_id": "P0011",
+    "product_name": "Tea"
+  },
+  {
+    "product_id": "P0012",
+    "product_name": "Coffee"
+  },
+  {
+    "product_id": "P0013",
+    "product_name": "Juice"
+  },
+  {
+    "product_id": "P0014",
+    "product_name": "Soft Drink"
+  },
+  {
+    "product_id": "P0015",
+    "product_name": "Water"
+  },
+  {
+    "product_id": "P0016",
+    "product_name": "Chips"
+  },
+  {
+    "product_id": "P0017",
+    "product_name": "Namkeen"
+  },
+  {
+    "product_id": "P0018",
+    "product_name": "Popcorn"
+  },
+  {
+    "product_id": "P0019",
+    "product_name": "Biscuits"
+  },
+  {
+    "product_id": "P0020",
+    "product_name": "Crackers"
+  },
+  {
+    "product_id": "P0021",
+    "product_name": "Rice"
+  },
+  {
+    "product_id": "P0022",
+    "product_name": "Wheat Flour"
+  },
+  {
+    "product_id": "P0023",
+    "product_name": "Poha"
+  },
+  {
+    "product_id": "P0024",
+    "product_name": "Oats"
+  },
+  {
+    "product_id": "P0025",
+    "product_name": "Dal"
+  },
+  {
+    "product_id": "P0026",
+    "product_name": "Soap"
+  },
+  {
+    "product_id": "P0027",
+    "product_name": "Shampoo"
+  },
+  {
+    "product_id": "P0028",
+    "product_name": "Toothpaste"
+  },
+  {
+    "product_id": "P0029",
+    "product_name": "Face Wash"
+  },
+  {
+    "product_id": "P0030",
+    "product_name": "Lotion"
+  },
+  {
+    "product_id": "P0031",
+    "product_name": "Detergent"
+  },
+  {
+    "product_id": "P0032",
+    "product_name": "Dishwash"
+  },
+  {
+    "product_id": "P0033",
+    "product_name": "Floor Cleaner"
+  },
+  {
+    "product_id": "P0034",
+    "product_name": "Toilet Cleaner"
+  },
+  {
+    "product_id": "P0035",
+    "product_name": "Phenyl"
+  },
+  {
+    "product_id": "P0036",
+    "product_name": "Banana"
+  },
+  {
+    "product_id": "P0037",
+    "product_name": "Apple"
+  },
+  {
+    "product_id": "P0038",
+    "product_name": "Orange"
+  },
+  {
+    "product_id": "P0039",
+    "product_name": "Mango"
+  },
+  {
+    "product_id": "P0040",
+    "product_name": "Grapes"
+  },
+  {
+    "product_id": "P0041",
+    "product_name": "Potato"
+  },
+  {
+    "product_id": "P0042",
+    "product_name": "Onion"
+  },
+  {
+    "product_id": "P0043",
+    "product_name": "Tomato"
+  },
+  {
+    "product_id": "P0044",
+    "product_name": "Carrot"
+  },
+  {
+    "product_id": "P0045",
+    "product_name": "Spinach"
+  },
+  {
+    "product_id": "P0046",
+    "product_name": "Ice Cream"
+  },
+  {
+    "product_id": "P0047",
+    "product_name": "Frozen Peas"
+  },
+  {
+    "product_id": "P0048",
+    "product_name": "Frozen Corn"
+  },
+  {
+    "product_id": "P0049",
+    "product_name": "Frozen Pizza"
+  },
+  {
+    "product_id": "P0050",
+    "product_name": "Frozen Fries"
+  }
+]
