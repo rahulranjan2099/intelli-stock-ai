@@ -1,23 +1,20 @@
+import { ProductRpcClient } from "../clients/product-rpc.client.js";
+import type { ProductDetails } from "../clients/product-rpc.client.js";
+
 export class ProductService {
-  async findByName(name: string) {
-    // Temporary hardcoded example.
-    // Later replace this with DB query.
+  private readonly client = new ProductRpcClient();
 
-    const products = [
-      {
-        productId: "P0001",
-        productName: "Milk",
-      },
-      {
-        productId: "P0002",
-        productName: "Curd",
-      },
-    ];
+  async findByName(name: string): Promise<ProductDetails[]> {
+    const search = name.trim();
+    if (!search) return [];
 
-    return products.filter((product) =>
-      product.productName
-        .toLowerCase()
-        .includes(name.toLowerCase())
-    );
+    try {
+      return await this.client.findByName(search);
+    } catch (error) {
+      // The inventory agent displays this message; do not expose transport details.
+      throw new Error("Product catalog lookup is unavailable. Please try again.", {
+        cause: error,
+      });
+    }
   }
 }

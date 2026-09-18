@@ -389,7 +389,7 @@ async function lookupProductNode(state: typeof InventoryState.State) {
 
   try {
     const products = await productService.findByName(state.productName);
-
+    console.log('products..', products)
     if (!products.length) {
       return {
         error: `No product found for "${state.productName}".`,

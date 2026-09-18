@@ -8,7 +8,6 @@ const productService = new ProductService()
 export const productLookupTool = tool(
     async ({ name }) => {
         const products = await productService.findByName(name)
-
         if(!products.length){
             return {
                 found: false,
