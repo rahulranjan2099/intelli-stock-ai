@@ -1,11 +1,6 @@
-import {
-  Conversation,
-  Message,
-} from "../models/index.js";
+import { Conversation, Message } from "../models/index.js";
 
-import {
-  askIntelligenceService,
-} from "./intelligence.service.js";
+import { askIntelligenceService } from "./intelligence.service.js";
 
 interface SendMessageInput {
   conversationId: number;
@@ -19,7 +14,7 @@ export const sendMessage = async ({
   content,
 }: SendMessageInput) => {
 
-  // 1. Find conversation AND verify ownership
+  // 1. Verify conversation ownership
   const conversation = await Conversation.findOne({
     where: {
       id: conversationId,
@@ -31,27 +26,32 @@ export const sendMessage = async ({
     throw new Error("CONVERSATION_NOT_FOUND");
   }
 
-  // 2. Save user's message
+  // 2. Store user's message
   const userMessage = await Message.create({
     conversationId,
     role: "USER",
     content,
   });
 
-  // 3. Call intelligence service
-//   const assistantResponse =
-//     await askIntelligenceService(content);
-  const assistantResponse = `You asked: ${content}`
+  // 3. LangGraph handles conversation state
+  const intelligenceResponse =
+    await askIntelligenceService({
+      conversationId,
+      message: content,
+    });
 
-  // 4. Save assistant response
+  // 4. Store assistant message
   const assistantMessage = await Message.create({
     conversationId,
     role: "ASSISTANT",
-    content: assistantResponse,
+    content: intelligenceResponse.response,
   });
 
   return {
     userMessage,
     assistantMessage,
+
+    type: intelligenceResponse.type,
+    data: intelligenceResponse.data,
   };
 };

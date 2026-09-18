@@ -1,23 +1,28 @@
 import axios from "axios";
+interface IntelligenceRequest {
+  conversationId: number;
+  message: string;
+}
+interface IntelligenceResponse {
+  response: string;
+  type: "text" | "forecast";
+  data: unknown | null;
+}
 
 const intelligenceApi = axios.create({
   baseURL: process.env.INTELLIGENCE_SERVICE_URL,
-  timeout: 30000,
+  timeout: 60_000,
 });
 
-interface IntelligenceResponse {
-  response: string;
-}
 
 export const askIntelligenceService = async (
-  message: string
-): Promise<string> => {
-  const response = await intelligenceApi.post<IntelligenceResponse>(
-    "/forecast",
-    {
-      message,
-    }
-  );
+  input: IntelligenceRequest
+): Promise<IntelligenceResponse> => {
+  const response =
+    await intelligenceApi.post<IntelligenceResponse>(
+      "/api/chat",
+      input
+    );
 
-  return response.data.response;
+  return response.data;
 };

@@ -4,7 +4,7 @@ export class PredictionClient {
   private readonly client: AxiosInstance;
 
   constructor() {
-    const predictionServiceUrl = process.env.PREDICTION_SERVICE_URL || "http://127.0.0.1:8000/api/v1";
+    const predictionServiceUrl = process.env.PREDICTION_SERVICE_URL || "http://127.0.0.1:8001/api/v1";
     this.client = axios.create({
       baseURL: predictionServiceUrl,
       timeout: 10000,

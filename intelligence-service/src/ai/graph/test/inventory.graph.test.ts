@@ -26,19 +26,19 @@ async function main() {
             thread_id: "user-123",
         },
     });
-    const result3 = await inventoryGraph.invoke(
-    {
-        messages: [
-            new HumanMessage(
-                "also with 20% discount"
-            ),
-        ],
-    },
-    {
-        configurable: {
-            thread_id: "user-123",
-        },
-    });
+    // const result3 = await inventoryGraph.invoke(
+    // {
+    //     messages: [
+    //         new HumanMessage(
+    //             "also with 20% discount"
+    //         ),
+    //     ],
+    // },
+    // {
+    //     configurable: {
+    //         thread_id: "user-123",
+    //     },
+    // });
 
     console.dir(result1, {
         depth: null
@@ -46,9 +46,9 @@ async function main() {
     console.dir(result2, {
         depth: null
     })
-    console.dir(result3, {
-        depth: null
-    })
+    // console.dir(result3, {
+    //     depth: null
+    // })
 }
 
 main().catch(console.error)

@@ -21,9 +21,4 @@ router.get(
   getConversationMessages
 );
 
-router.post(
-  "/:conversationId/messages",
-  createMessage
-);
-
 export default router;

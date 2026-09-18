@@ -3,7 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import express from "express";
 
-import predictionRoutes from "./routes/predictionRoutes.js";
+import routes from "./routes/index"
 
 const app = express();
 const port = Number(process.env.PORT) || 8000;
@@ -16,7 +16,7 @@ app.get("/health", (_request, response) => {
   response.status(200).json({ status: "ok" });
 });
 
-app.use(predictionRoutes);
+app.use("/api", routes);
 
 if (require.main === module) {
   app.listen(port, () => {
